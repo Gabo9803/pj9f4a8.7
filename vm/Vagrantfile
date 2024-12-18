@@ -11,10 +11,10 @@ NOM_MAQUINA = "pj9f4a87-grup04" # Cambia XX por tu número de grupo
 HOSTNAME = "pj9f4a87-grup04.fjeclot.net" # Cambia XX por tu número de grupo
 
 # Rutas de carpetas compartidas según la estructura
-CARPETA_MAQ_FIS1 = "../aplicacio1/codi"
-CARPETA_MAQ_VIR1 = "/home/vagrant/aplicacio1/codi"
-CARPETA_MAQ_FIS2 = "../aplicacio2/codi"
-CARPETA_MAQ_VIR2 = "/home/vagrant/aplicacio2/codi"
+CARPETA_MAQ_FIS1 = "../aplicacio1"
+CARPETA_MAQ_VIR1 = "/home/vagrant/aplicacio1"
+CARPETA_MAQ_FIS2 = "../aplicacio2"
+CARPETA_MAQ_VIR2 = "/home/vagrant/aplicacio2"
 
 # CONFIGURACIÓN DE LA MÁQUINA
 

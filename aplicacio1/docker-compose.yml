@@ -1,7 +1,38 @@
 services:
-    webphp_pizzeria: 
-        image: ipizzeria:1.0 
-        build: .
-        container_name: cpizzeria
-        ports:
-            - "80:80" 
+  # Configuración del servicio Apache
+  apache:
+    # Imagen base para el contenedor Apache
+    image: httpd:latest
+
+    # Volúmenes montados en el contenedor
+    volumes:
+      # Monta el código fuente de la aplicación en el directorio raíz de Apache
+      - ./codi/starship-sorades-13k:/usr/local/apache2/htdocs
+
+    # Puertos expuestos por el contenedor
+    ports:
+      # Expone el puerto 80 del contenedor al puerto 80 del host
+      - "80"
+
+  # Configuración del servicio NGINX
+  nginx:
+    # Imagen base para el contenedor NGINX
+    image: nginx:latest
+
+    # Nombre del contenedor (opcional)
+    container_name: ngix-load-balancer
+
+    # Puertos expuestos por el contenedor
+    ports:
+      # Mapea el puerto 8000 del contenedor al puerto 80 del host
+      - "80:8000"
+
+    # Volúmenes montados en el contenedor
+    volumes:
+      # Monta el archivo de configuración local de NGINX en el directorio de configuración del contenedor
+      - ./nginx.conf:/etc/nginx/nginx.conf
+
+    # Dependencias del contenedor
+    depends_on:
+      # Garantiza que el contenedor de Apache esté iniciado antes que el de NGINX
+      - apache
